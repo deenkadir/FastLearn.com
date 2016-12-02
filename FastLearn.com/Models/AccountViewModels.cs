@@ -49,14 +49,15 @@ namespace FastLearn.com.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Email Or UserName")]
+        
+        public string EmailOrUserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
@@ -74,6 +75,17 @@ namespace FastLearn.com.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+        [Required]
+        [Display(Name ="User Name")]
+        public string UserName { get; set; }
+        //FirstName
+        [Required]
+        [Display(Name ="First Name")]
+        public string FirstName { get; set; }
+        //LastName
+        [Required]
+        [Display(Name ="Last Name")]
+        public string LastName { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +7,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FastLearn.com.Models;
+using FastLearn.Models;
+using System.Data.Entity.Migrations;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FastLearn.com.Controllers
 {
@@ -63,6 +64,8 @@ namespace FastLearn.com.Controllers
 
         //
         // POST: /Account/Login
+        ApplicationDbContext db = new ApplicationDbContext();
+        string validID;
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -75,7 +78,25 @@ namespace FastLearn.com.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            try
+            {
+                var uEmail = db.Users.First(u => u.Email == model.EmailOrUserName);
+                string ab = uEmail.Email;
+                if (model.EmailOrUserName == ab)
+                {
+                    var userNamrOrPassWord = db.Users.First(u => u.Email == model.EmailOrUserName);
+                    validID = userNamrOrPassWord.UserName;
+                }
+            }
+            catch (Exception)
+            {
+                    validID = model.EmailOrUserName;              
+            }
+          
+           
+            
+           
+            var result = await SignInManager.PasswordSignInAsync(validID, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -87,6 +108,7 @@ namespace FastLearn.com.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
+                    Console.WriteLine(result.ToString());
                     return View(model);
             }
         }
@@ -151,11 +173,20 @@ namespace FastLearn.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    using (db)
+                    {
+                        var studtent = new Student { ID = model.Email, FirstName = model.FirstName, LastName = model.LastName, Image = "test", EnrollmentDate = DateTime.Now };
+                        db.Students.AddOrUpdate(studtent);
+                        db.SaveChanges();
+                        db.Roles.AddOrUpdate(r => r.Name,new IdentityRole { Name = "Student" });
+                        db.SaveChanges();
+                    }
+                    UserManager.AddToRole(user.Id,"Student");
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

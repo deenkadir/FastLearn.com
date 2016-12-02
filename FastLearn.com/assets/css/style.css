@@ -1,0 +1,58 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700);
+* {
+  font-family: "Open Sans";
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  min-height: 100%;
+  min-width: 100%;
+  z-index: -9999;
+}
+.hero-wrapper figure {
+  margin: 0;
+  position: relative;
+}
+.hero-wrapper figure h1 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border-right: 3px solid #fff;
+  padding: 5px 10px 5px 5px;
+}
+.hero-wrapper video {
+  width: 100%;
+  max-width: 100%;
+}
+
+.stretch {
+  height: auto;
+  background: #F72B2B;
+  min-height: 100%;
+  min-width: 100%;
+  background-size: cover;
+  margin-top: 800px;
+}
+.stretch h1 {
+  padding: 20px;
+}
+.Video{
+    width:100px;
+    height:auto;
+    align-self:center;
+}
+

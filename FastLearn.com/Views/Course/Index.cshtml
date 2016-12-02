@@ -1,0 +1,171 @@
+﻿@model IEnumerable<FastLearn.Models.Course>
+@using FastLearn.com.Models;
+@{
+    ViewBag.Title = "Courses";
+}
+
+<section class="engine"><a rel="external" href="https://mobirise.com">responsive website building</a></section>
+<section class="mbr-info mbr-info-extra mbr-section mbr-section-md-padding mbr-parallax-background mbr-after-navbar" id="msg-box1-k" style="background-image: url('../../assets/images/jumbotron.jpg'); padding-top: 120px; padding-bottom: 90px;">
+    <div class="container">
+        <div class="row">
+            <div class="mbr-table-md-up">
+                <div class="mbr-table-cell mbr-right-padding-md-up col-md-8 text-xs-center text-md-left">
+
+                    <h3 class="mbr-info-title mbr-section-title display-2">FAST LEARN COURSES</h3>
+                </div>
+                @if (User.IsInRole("Instructor")) {
+                <div class="mbr-table-cell col-md-4">
+                    <div class="text-xs-center"><a class="btn btn-primary" href="Create">CREATE NEW COURSE</a></div>
+                </div>
+                }
+            </div>
+
+        </div>
+    </div>
+    </section>
+<section class="mbr-section" id="form2-12" style="background-color: rgb(46, 46, 46); padding-top: 0px; padding-bottom: 0px;">
+    <div class="mbr-section mbr-section__container mbr-section__container--middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-xs-center">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mbr-section mbr-section-nopadding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1" data-form-type="formoid">
+                    <div data-form-alert="true"><div hidden="" data-form-alert-success="true">Thanks for filling out form!</div></div>
+                    <form class="mbr-form" action="https://mobirise.com/" method="post" data-form-title="SUBSCRIBE FORM">
+                        <input type="hidden" value="QNY7rItfPaD/iPhONShR0WCh21Nf8v5601UeHjt6r/v38nwsbpHlHKkL2QdtCxtS0HDnTEiLpZh/zBuK7Pp5NDHit/iQsr7jVDNMbL2e3lvzwUMpkKW79T0+wGhn/P59" data-form-email="true">
+                        <div class="mbr-subscribe mbr-subscribe-dark input-group">
+                            <input type="email" class="form-control" name="email" required="" data-form-field="Email" placeholder="Search Course" id="form2-12-email">
+                            <span class="input-group-btn"><button type="submit" class="btn btn-primary">Search...</button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-cards mbr-section mbr-section-nopadding mbr-parallax-background" id="features3-i" style="position: relative; background-image: url('../../assets/images/jumbotron.jpg'); background-attachment: scroll; background-size: auto;" data-jarallax-original-styles="position: relative;  ">
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(34, 34, 34);">
+    </div>
+    @{
+        if (User.IsInRole("Instructor")|| User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        }
+    }
+    <!--div class="mbr-cards-row row"-->
+    <div class="mbr-cards-col col-xs-12 " style="padding-top: 80px; padding-bottom: 160px;">
+        @foreach (var item in Model)
+        {
+
+            <div class="container col-md-4" id="CD">
+                <div class="card cart-block">
+                    <div class="card-img"><img src="~/assets/images/code-man.jpg" class="card-img-top"></div>
+                    <div class="card-block">
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h4>
+
+                        <p class="card-text">@Html.DisplayNameFor(model => model.CourseDescribtion)</p>
+                        <h3 class="card-title">BY</h3>
+                        @{
+                            ApplicationDbContext db = new ApplicationDbContext();
+                            var name = item.InstructorID;
+                            var rnam = db.Users.First(r => r.Id == name);
+                            // Instructor inst = new Instructor { FirstName = rnam.FirstName};
+                        }
+                        <h5>@Html.DisplayFor(modelItem => rnam.UserName)</h5>
+                        <div class="card-btn"><a href="https://mobirise.com" class="btn btn-primary">Enroll</a></div>
+                    </div>
+                </div>
+            </div>
+
+                            }
+    </div>
+    <div id="jarallax-container-1" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -100;"><div style="position: fixed; top: 0px; left: 0px; width: 6381.33px; height: 4786px; overflow: hidden; pointer-events: none; margin-left: -2742.67px; margin-top: -2075.5px; visibility: visible; transform: translate3d(0px, 1095.9px, 0px); background-image: url(&quot;file:///C:/Users/Abdulbasit/Desktop/FLDesign/assets/images/jumbotron.jpg&quot;); background-size: 100%; background-position: 50% 50%; background-repeat: no-repeat;"></div></div>
+</section>
+
+<section class="mbr-section" id="form2-12" style="background-color: rgb(46, 46, 46); padding-top: 0px; padding-bottom: 0px;">
+    <div class="mbr-section mbr-section__container mbr-section__container--middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-xs-center">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mbr-section mbr-section-nopadding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1" data-form-type="formoid">
+                    <div data-form-alert="true"><div hidden="" data-form-alert-success="true">Thanks for filling out form!</div></div>
+                    <form class="mbr-form" action="https://mobirise.com/" method="post" data-form-title="SUBSCRIBE FORM">
+                        <input type="hidden" value="QNY7rItfPaD/iPhONShR0WCh21Nf8v5601UeHjt6r/v38nwsbpHlHKkL2QdtCxtS0HDnTEiLpZh/zBuK7Pp5NDHit/iQsr7jVDNMbL2e3lvzwUMpkKW79T0+wGhn/P59" data-form-email="true">
+                        <div class="mbr-subscribe mbr-subscribe-dark input-group">
+                            <input type="email" class="form-control" name="email" required="" data-form-field="Email" placeholder="Search Course" id="form2-12-email">
+                            <span class="input-group-btn"><button type="submit" class="btn btn-primary">Search...</button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    @*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseDescribtion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstructorID)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseDescribtion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstructorID)
+                </td>
+                @{
+                    if (User.Identity.Name == "Admin")
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                    }
+                }
+            </tr>
+                    }
+
+    </table>*@

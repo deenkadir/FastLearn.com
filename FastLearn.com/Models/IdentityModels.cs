@@ -31,5 +31,12 @@ namespace FastLearn.com.Models
             return new ApplicationDbContext();
         }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<CourseFile> CourseFiles { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+
+        public System.Data.Entity.DbSet<FastLearn.com.Models.Category> Categories { get; set; }
+        //public DbSet< MyProperty { get; set; }
     }
 }

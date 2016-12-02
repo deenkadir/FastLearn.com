@@ -178,7 +178,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseFilesController.cs" />
+    <Compile Include="Controllers\EnrollmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\fastLearnContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,22 +190,24 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseFile.cs" />
     <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="assets\animate.css\style.css" />
+    <Content Include="assets\css\mbr-additional.css" />
+    <Content Include="assets\images\1.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -236,7 +242,6 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
@@ -250,10 +255,44 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\test.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Instructor\Create.cshtml" />
+    <Content Include="Views\Instructor\Delete.cshtml" />
+    <Content Include="Views\Instructor\Details.cshtml" />
+    <Content Include="Views\Instructor\Edit.cshtml" />
+    <Content Include="Views\Instructor\Index.cshtml" />
+    <Content Include="Views\Enrollments\Create.cshtml" />
+    <Content Include="Views\Enrollments\Delete.cshtml" />
+    <Content Include="Views\Enrollments\Details.cshtml" />
+    <Content Include="Views\Enrollments\Edit.cshtml" />
+    <Content Include="Views\Enrollments\Index.cshtml" />
+    <Content Include="Views\CourseFiles\Create.cshtml" />
+    <Content Include="Views\CourseFiles\Delete.cshtml" />
+    <Content Include="Views\CourseFiles\Details.cshtml" />
+    <Content Include="Views\CourseFiles\Edit.cshtml" />
+    <Content Include="Views\CourseFiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\bootstrap-material-design-font\" />
+    <Folder Include="assets\bootstrap\" />
+    <Folder Include="assets\dropdown\" />
+    <Folder Include="assets\formoid\" />
+    <Folder Include="assets\jarallax\" />
+    <Folder Include="assets\jquery-mb-ytplayer\" />
+    <Folder Include="assets\mobirise\" />
+    <Folder Include="assets\smooth-scroll\" />
+    <Folder Include="assets\socicon\" />
+    <Folder Include="assets\tether\" />
+    <Folder Include="assets\theme\" />
+    <Folder Include="assets\touchSwipe\" />
+    <Folder Include="assets\viewportChecker\" />
+    <Folder Include="assets\web\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -22,5 +22,7 @@ namespace FastLearn.com.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<FastLearn.com.Models.Category> Categories { get; set; }
     }
 }

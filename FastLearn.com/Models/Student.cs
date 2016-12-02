@@ -13,6 +13,8 @@ namespace FastLearn.Models
         public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string  Image { get; set; }
+        public string Biography { get; set; }
         public DateTime EnrollmentDate { get; set; }
         public ICollection<Enrollment> Enrollments { get; set; }
     }

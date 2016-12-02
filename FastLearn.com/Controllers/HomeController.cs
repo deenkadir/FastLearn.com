@@ -48,7 +48,7 @@ namespace FastLearn.com.Controllers
                     CourseFiles = model.CourseFiles
                 ,
                     CourseImage = model.CourseImage,
-                    Genre = model.Genre,
+ 
                     Title = model.Title
                 };
                 db.Courses.Add(course);
