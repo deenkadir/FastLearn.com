@@ -36,9 +36,6 @@ namespace FastLearn.com.Migrations
                 context.SaveChanges();
                 userManager.AddToRole(user.Id, user.UserName);
             }
-            Course course = new Course { ID = 1, Title = "Test Data", CategoryID = "1", CourseDescribtion = "test Description", InstructorID = "abdul@gmail.com", CourseImage = "fjldsfs", price = 3 };
-            context.Courses.AddOrUpdate(r=>r.ID);
-            context.SaveChanges();
             //DbSet<Course>.AddOrUpdate()
             //  This method will be called after migrating to the latest version.
 
